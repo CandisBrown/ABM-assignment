@@ -1,0 +1,112 @@
+import java.util.Scanner;
+class try3 {
+  public static void main(String[] args) {
+    
+    Scanner input = new Scanner(System.in);
+        String name;
+        int pin = 7890;
+        int PI = 0;
+        int tries = 0;
+        int menuOption;
+        int withdrawAmt = 0, depositAmount = 0, balance = 5000;
+        int returnOption;
+        System.out.println("Enter your full name:");
+        name = input.nextLine();
+        for (tries = 1; tries <= 3 && PI != pin; tries++)
+        {
+            System.out.println("Enter your password:");
+            PI = input.nextInt();
+            
+            System.out.println();
+                   
+        }
+        if (PI == pin) {
+            System.out.println("Welcome to The Bank of Nassau\nCustomer: "+ name+"\n");
+            System.out.println("\nABM Menu");
+            System.out.println("**************************");
+            do {
+                System.out.println("1. Withdraw");
+                System.out.println("2. Deposit");
+                System.out.println("3. Check Balance");
+                System.out.println("4. Exit");                            
+                System.out.print("Enter relevant number: ");
+                menuOption = input.nextInt();
+                
+                System.out.println();
+                
+                switch (menuOption) {
+                    case 1:
+                        System.out.println("Account Withdraw");
+                        System.out.println("**************************");
+                        System.out.print("Amount: $" );
+                        withdrawAmt = input.nextInt();
+                        if (withdrawAmt <= balance) {
+                            balance -= withdrawAmt;
+                            System.out.println("**************************");
+                            System.out.println("Account Withdrawal");
+                            System.out.println("**************************");
+                            System.out.println("Amount withdrawn: $" + withdrawAmt);
+                            System.out.println("Current Balance: $" + balance);
+                            System.out.println("**************************");
+                        } else {
+                            System.out.println("Insufficient Funds!!");
+                        }
+                        do {
+                            System.out.println("1. Return");
+                            returnOption = input.nextInt();
+                            if (returnOption != 1) {
+                                System.out.println("Invalid option, Please try again.");
+                            }
+                        }while (returnOption != 1);
+                        break;
+                    case 2:
+                        System.out.println("Account Deposit");
+                        System.out.println("**************************");
+                        System.out.print("Amount: $" );
+                        depositAmount = input.nextInt();
+                        balance += depositAmount;
+                        System.out.println("**************************");
+                        
+                        System.out.println();
+                        
+                        System.out.println("Account Deposit");
+                        System.out.println("**************************");
+                        System.out.println("Amount deposited: $" + depositAmount);
+                        System.out.println("Current Balance: $" + balance);
+                        System.out.println("------------------------");
+                        do {
+                            System.out.println("1. Return");
+                            returnOption = input.nextInt();
+                            if (returnOption != 1) {
+                                System.out.println("Invalid option, Please try again");
+                            }
+                        }while (returnOption != 1);
+                        break;
+                    case 3:
+                        System.out.println("Current Balance");
+                        System.out.println("**************************");
+                        System.out.println("Savings: $" + balance);
+                        System.out.println("**************************");
+                        do {
+                            System.out.println("1. Return");
+                            returnOption = input.nextInt();
+                            if (returnOption != 1) {
+                                System.out.println("Invalid option, Please try again");
+                            }
+                        }while (returnOption != 1);
+                        break;
+                    case 4:
+                        System.out.println("Exiting");
+                        break;
+                    default:
+                        System.out.println("Invalid menu Option!");
+                }
+            }while (menuOption != 4);
+
+        } else {
+                System.out.println("Three incorrect passwords ");
+                System.exit(1);
+               }
+    
+  }
+}
